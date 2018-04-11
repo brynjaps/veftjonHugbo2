@@ -88,10 +88,10 @@ router.route('/questions?score').get(function(req, res) {
   });
 });
 
-router.get('/questions/:email', (req, res) => {
-  const { email } = req.params;
+router.get('/questions/:score', (req, res) => {
+  const { score } = req.params;
 
-  const item = Question.find(i => i.id === email);
+  const item = Question.find(i => i.score === score);
 
   if (item) {
     return res.json(item);
