@@ -88,6 +88,18 @@ router.route('/questions?score').get(function(req, res) {
   });
 });
 
+router.get('/questions/:email', (req, res) => {
+  const { email } = req.params;
+
+  const item = Question.find(i => i.id === email);
+
+  if (item) {
+    return res.json(item);
+  }
+
+  res.status(404).json({ error: 'Not found' });
+});
+
 
 router.route('/questions/:id').delete(function(req, res) {
   Question.remove({
